@@ -38,6 +38,7 @@ type WorkflowJob struct {
 	Name        *string     `json:"name,omitempty"`
 	Steps       []*TaskStep `json:"steps,omitempty"`
 	CheckRunURL *string     `json:"check_run_url,omitempty"`
+	Labels      []string    `json:"labels,omitempty"`
 }
 
 // Jobs represents a slice of repository action workflow job.

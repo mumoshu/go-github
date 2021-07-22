@@ -1083,6 +1083,20 @@ type WorkflowDispatchEvent struct {
 	Sender *User         `json:"sender,omitempty"`
 }
 
+// A GitHub Actions workflow job has been queued, started, or completed on a repository.
+// The type of activity is specified in the action property of the payload object.
+//
+// GitHub API docs: https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_job
+type WorkflowJobEvent struct {
+	Action      *string      `json:"action,omitempty"`
+	WorkflowJob *WorkflowJob `json:"workflow_job,omitempty"`
+	// Org is not nil when the webhook is configured for an organization or the event
+	// occurs from activity in a repository owned by an organization.
+	Org    *Organization `json:"organization,omitempty"`
+	Repo   *Repository   `json:"repository,omitempty"`
+	Sender *User         `json:"sender,omitempty"`
+}
+
 // WorkflowRunEvent is triggered when a GitHub Actions workflow run is requested or completed.
 //
 // GitHub API docs: https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#workflow_run
